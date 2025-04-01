@@ -12,6 +12,7 @@
 The Mentor-Mentee App is designed to connect individuals seeking mentorship with experienced mentors. Users can sign up as either a Mentor, Mentee, or Both and interact within the system to build meaningful mentorship relationships. The app provides features for profile management, searching and filtering mentors/mentees, sending and managing mentorship requests, and structuring mentorship activities.
 
  🎯Key Features:
+ 
 -Users can sign up as Mentors or Mentees, log in, and manage their profiles with details like skills, interests, and availability.
 
 -Users can search, filter, and sort mentors or mentees based on different criteria.
