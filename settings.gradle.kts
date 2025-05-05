@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ArchitecturedMentorshipApp"
+rootProject.name = "Mento-Mentee-App"
 include(":app")
- 

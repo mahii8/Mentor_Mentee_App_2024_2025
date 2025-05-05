@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mobile.architecturedmentorshipapp"
+    namespace = "com.example.mento_mentee_app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.mobile.architecturedmentorshipapp"
+        applicationId = "com.example.mento_mentee_app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
