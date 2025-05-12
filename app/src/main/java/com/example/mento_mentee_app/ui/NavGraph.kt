@@ -25,6 +25,7 @@ import com.example.mento_mentee_app.ui.request.ProcessRequestScreen
 import com.example.mento_mentee_app.ui.request.RequestScreen
 import com.example.mento_mentee_app.ui.request.SendRequestScreen
 import com.example.mento_mentee_app.ui.task.AssignTaskScreen
+import com.example.mento_mentee_app.ui.task.EditTasksScreen
 import com.example.mento_mentee_app.ui.task.RelationsScreen
 import com.example.mento_mentee_app.ui.task.TasksPageScreen
 
@@ -99,7 +100,7 @@ fun NavGraph(navController: NavHostController) {
                 navArgument("isCompleted") { type = NavType.BoolType }
             )
         ) {
-            EditTaskScreen(
+            EditTasksScreen(
                 navController = navController,
                 id = it.arguments?.getString("id") ?: "",
                 title = it.arguments?.getString("title") ?: "",
@@ -139,19 +140,4 @@ fun NavGraph(navController: NavHostController) {
         composable("changePassword") { ChangePasswordScreen(navController) }
         composable("deleteAccount") { DeleteAccountScreen(navController) }
     }
-}
-
-@Composable
-fun EditTaskScreen(
-    navController: NavHostController,
-    id: String,
-    title: String,
-    description: String,
-    dueDate: String,
-    priority: String,
-    mentorId: String,
-    menteeId: String,
-    isCompleted: Boolean
-) {
-
 }

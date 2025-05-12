@@ -1,10 +1,12 @@
 package com.example.mento_mentee_app.di
 
+import com.example.mento_mentee_app.data.api.TaskApi
+import com.example.mento_mentee_app.data.repository.TaskRepository
 import android.content.Context
 import com.example.mento_mentee_app.data.api.RequestApi
 import com.example.mento_mentee_app.data.datastore.TokenManager
-import com.example.mento_mentee_app.model.Mentor.MentorApi
-import com.example.mento_mentee_app.model.Mentor.MentorRepository
+import com.example.mento_mentee_app.data.api.MentorApi
+import com.example.mento_mentee_app.data.repository.MentorRepository
 import com.example.mento_mentee_app.data.repository.RequestRepository
 import dagger.Module
 import dagger.Provides
@@ -47,6 +49,18 @@ object NetworkModule {
 
             chain.proceed(newRequest)
         }
+    }
+
+    @Provides
+    @Singleton
+    fun provideTaskApi(retrofit: Retrofit): TaskApi {
+        return retrofit.create(TaskApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(taskApi: TaskApi): TaskRepository {
+        return TaskRepository(taskApi)
     }
 
     @Provides

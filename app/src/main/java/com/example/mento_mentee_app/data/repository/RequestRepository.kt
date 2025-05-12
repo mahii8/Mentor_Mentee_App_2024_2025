@@ -46,4 +46,8 @@ class RequestRepository @Inject constructor(
     suspend fun updateRequestStatus(requestId: String, status: UpdateMentorshipStatus): Response<FetchedMentorshipRequest> {
         return api.updateRequestStatus(requestId, status)
     }
+
+    suspend fun getAcceptedRequestsForMentees(): Response<List<FetchedMentorshipRequest>> {
+        return api.getAcceptedRequestsForMentees()
+    }
 }

@@ -35,6 +35,7 @@ interface RequestApi {
         @Path("id") requestId: String,
         @Body statusUpdate: UpdateMentorshipStatus
     ): Response<FetchedMentorshipRequest>
-
+    @GET("/mentorship-requests/mentees/accepted")
+    suspend fun getAcceptedRequestsForMentees(): Response<List<FetchedMentorshipRequest>>
 
 }

@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class MentorshipRequestViewModel @Inject constructor(
     private val repository: RequestRepository)
@@ -25,6 +24,10 @@ class MentorshipRequestViewModel @Inject constructor(
 
     private val _requests = MutableStateFlow<List<FetchedMentorshipRequest>>(emptyList())
     val requests = _requests.asStateFlow()
+
+    private val _acceptedRequests = MutableStateFlow<List<FetchedMentorshipRequest>>(emptyList())
+    val acceptedRequests = _acceptedRequests.asStateFlow()
+
 
 
     private val _errorMessage = MutableStateFlow<String?>(null)
@@ -76,6 +79,21 @@ class MentorshipRequestViewModel @Inject constructor(
         }
     }
 
+    fun fetchAcceptedRequestsForMentees() {
+        viewModelScope.launch {
+            try {
+                val result = repository.getAcceptedRequestsForMentees()
+                if (result.isSuccessful) {
+                    _acceptedRequests.value = result.body() ?: emptyList()
+                } else {
+                    _errorMessage.value = "Failed to fetch accepted requests: ${result.message()}"
+                }
+            } catch (e: Exception) {
+                _errorMessage.value = "Error fetching accepted requests: ${e.message}"
+            }
+        }
+    }
+
     fun deleteRequestById(requestId: String) {
         viewModelScope.launch {
             val success = repository.deleteMentorshipRequest(requestId)
@@ -118,6 +136,7 @@ class MentorshipRequestViewModel @Inject constructor(
             }
         }
     }
+
 }
 
 
